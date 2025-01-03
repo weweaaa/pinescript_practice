@@ -1,10 +1,10 @@
-//@version=4
+//@version=6
 // 本程式來自 https://www.leafbodhi.com/tradingview-deduct-group/
 
-study("Deduct扣抵",overlay=true)
-x = input(20, title="小均")
-y = input(60, title="中均")
-z = input(120, title="大均")
+indicator('Deduct扣抵', overlay = true)
+x = input(20, title = '小均')
+y = input(60, title = '中均')
+z = input(120, title = '大均')
 
 close1 = close[x]
 close2 = close[y]
@@ -16,26 +16,11 @@ close3 = close[z]
 //tostring(x) 可以把本來是「數字」的x轉換成「字串」
 
 
-l1 = label.new(bar_index-x, na, tostring(x)+'MA '+tostring(close[x]), 
-  color=color.orange, 
-  textcolor=color.white,
-  style=close[x] > open[x] ? label.style_labeldown : label.style_labelup, 
-  yloc=close[x] > open[x] ? yloc.abovebar : yloc.belowbar
-  )
+l1 = label.new(bar_index - x, na, str.tostring(x) + 'MA ' + str.tostring(close[x]), color = color.orange, textcolor = color.white, style = close[x] > open[x] ? label.style_label_down : label.style_label_up, yloc = close[x] > open[x] ? yloc.abovebar : yloc.belowbar)
 label.delete(l1[1])
 
-l2 = label.new(bar_index-y, na, tostring(y)+'MA '+tostring(close[y]), 
-  color=color.blue, 
-  textcolor=color.white,
-   style=close[y] > open[y] ? label.style_labeldown : label.style_labelup, 
-  yloc=close[y] > open[y] ? yloc.abovebar : yloc.belowbar
-  )
+l2 = label.new(bar_index - y, na, str.tostring(y) + 'MA ' + str.tostring(close[y]), color = color.blue, textcolor = color.white, style = close[y] > open[y] ? label.style_label_down : label.style_label_up, yloc = close[y] > open[y] ? yloc.abovebar : yloc.belowbar)
 label.delete(l2[1])
 
-l3 = label.new(bar_index-z, na, tostring(z) +'MA '+tostring(close[z]), 
-  color=color.navy, 
-  textcolor=color.white,
-  style=close[z] > open[z] ? label.style_labeldown : label.style_labelup, 
-  yloc=close[z] > open[z] ? yloc.abovebar : yloc.belowbar
-  )
+l3 = label.new(bar_index - z, na, str.tostring(z) + 'MA ' + str.tostring(close[z]), color = color.navy, textcolor = color.white, style = close[z] > open[z] ? label.style_label_down : label.style_label_up, yloc = close[z] > open[z] ? yloc.abovebar : yloc.belowbar)
 label.delete(l3[1])
